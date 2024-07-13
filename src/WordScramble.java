@@ -16,9 +16,9 @@ import java.util.Scanner;
 
 public class WordScramble {
 
-    private String correctWord = "words";
+    private String correctWord = "moon";
+    //String[] scrambledWords = solution.trim().split("\s+");
     private String scrambledWord = "";
-
     WordScramble() {
         prompt();
         scrambleWord();
@@ -48,6 +48,8 @@ public class WordScramble {
         }
     }
 
+
+
     void userGuess() {
         Scanner kbd = new Scanner(System.in);
         String userGuess = "";
@@ -61,3 +63,15 @@ public class WordScramble {
         System.out.println("Congratulations, you unscrambled the word!");
     }
 }
+
+// hello car <- user input
+// [hello][car] <- split string (remove white space) and store in String array
+//start loop
+// [h][e][l][l][o] <- char array (1 iteration captures all letters from first word)
+// [e][h][l][o][l] <- ArrayList of type char
+//second iteration starts (remember to add space)
+//[c][a][r] <- char array
+//[r][c][a] <- ArrayList of type char
+//Exit condition for loop is length of split string array
+//trim it at the end
+//ehlol rca <- String
