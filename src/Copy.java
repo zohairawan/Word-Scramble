@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class WordScramble {
+public class Copy {
 
     //String[] scrambledWords = solution.trim().split("\s+");
     String[] wordList = {"now", "one", "two"};
@@ -23,7 +23,7 @@ public class WordScramble {
 
     private String correctWord = wordList[index];
     private String scrambledWord = "";
-    WordScramble() {
+    Copy() {
         prompt();
         scrambleWord();
         userGuess();
