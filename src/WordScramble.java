@@ -13,19 +13,19 @@ TODO: Instead of hardcoding the correct word see if you can get the word as inpu
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.Flow;
 
 public class WordScramble {
 
     //String[] scrambledWords = solution.trim().split("\s+");
     String[] wordList = {"now", "one", "two"};
-    Random rand = new Random();
-    int index = rand.nextInt(wordList.length);
 
-    private String correctWord = wordList[index];
+
+    private String correctWord;;
     private String scrambledWord = "";
     WordScramble() {
         prompt();
-        scrambleWord();
+        scrambleWord(correctWord);
         userGuess();
     }
 
@@ -35,8 +35,16 @@ public class WordScramble {
         System.out.println("When typing your answer don't worry about upper or lower case\n");
     }
 
+    String getWord() {
+        Random rand = new Random();
+        int index = rand.nextInt(wordList.length);
+        correctWord = wordList[index];
+        return correctWord;
+    }
+
     //takes the original word and scrambles it
-    void scrambleWord() {
+    void scrambleWord(String correctWord) {
+        correctWord = getWord();
         char[] preScramble = correctWord.toCharArray();     //moon -> [m][o][o][n]
 
         ArrayList<Character> scrambled = new ArrayList<>(); // {[m][o][o][n]}
@@ -64,7 +72,6 @@ public class WordScramble {
             userGuess = kbd.nextLine();
             System.out.println();
         }
-        System.out.println("Congratulations, you unscrambled the word!");
     }
 }
 
@@ -72,6 +79,13 @@ public class WordScramble {
 
 
 
+/*
+ Flow of program:
+    user prompt
+    capture word (needs to account for spaces in word as well)
+    scrambleWord (send capture word to this)
+    userGuess (send scramble word to this)
+ */
 
 
 
