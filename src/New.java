@@ -19,6 +19,7 @@ public class New {
     Random randomNumGenerator = new Random();;
     String scrambledWord = "";
     Scanner kbd = new Scanner(System.in);
+    int streak = 0;
 
     void instructions() {
         System.out.println("I will present you with a scrambled word");
@@ -38,7 +39,6 @@ public class New {
 
     void getWordFromList() {
         int index = randomNumGenerator.nextInt(dynamicWordList.size());
-//        answer = dynamicWordList.get(index);
         answer = dynamicWordList.remove(index);
     }
 
@@ -65,6 +65,7 @@ public class New {
     void prompt() {
         System.out.println("'q' to quit");
         System.out.println("(words remaining):" + (dynamicWordList.size()+1));
+        System.out.println("Streak: " + streak + " > 2?");
         System.out.println("Scrambled word is " + scrambledWord);
         System.out.print("Your guess: ");
     }
@@ -73,16 +74,21 @@ public class New {
         String userGuess;
         int answeredCorrectly = 0;
         int numberOfAttempts = 0;
+        boolean streakAvailable = false;
 
         do {
             getWordFromList();
             scrambleWord();
             prompt();
             userGuess = kbd.nextLine();
+            if(userGuess.equals("h") && streak > 2) {
+                userGuess = answer;
+                streak = 0;
+            }
             while(!userGuess.equals(answer) && !userGuess.equals("q")) {
+                streak = 0;
                 System.out.println("\nYou got it wrong, try again");
-                System.out.println("Scrambled word is " + scrambledWord);
-                System.out.print("Your guess: ");
+                prompt();
                 userGuess = kbd.nextLine();
                 numberOfAttempts++;
             }
@@ -90,6 +96,7 @@ public class New {
             System.out.println("\nYou got it right!");
             scrambledWord = "";
             answeredCorrectly++;
+            streak++;
             numberOfAttempts++;
 
             if (dynamicWordList.size() == 0) {
