@@ -38,8 +38,8 @@ public class New {
 
     void getWordFromList() {
         int index = randomNumGenerator.nextInt(dynamicWordList.size());
-        answer = dynamicWordList.get(index);
-        dynamicWordList.remove(index);
+//        answer = dynamicWordList.get(index);
+        answer = dynamicWordList.remove(index);
     }
 
     void scrambleWord() {
@@ -71,6 +71,9 @@ public class New {
 
     void userGuess() {
         String userGuess;
+        int answeredCorrectly = 0;
+        int numberOfAttempts = 0;
+
         do {
             getWordFromList();
             scrambleWord();
@@ -81,17 +84,26 @@ public class New {
                 System.out.println("Scrambled word is " + scrambledWord);
                 System.out.print("Your guess: ");
                 userGuess = kbd.nextLine();
+                numberOfAttempts++;
             }
+
             System.out.println("\nYou got it right!");
             scrambledWord = "";
+            answeredCorrectly++;
+            numberOfAttempts++;
 
-            if(dynamicWordList.size() == 0 && difficulty != 2) {
+            if (dynamicWordList.size() == 0) {
+                if(difficulty + 1 > 2) {
+                    System.out.println("You finished the game!");
+                    break;
+                }
                 System.out.println("\n---------MOVING ON TO LEVEL " + (difficulty+1) + "----------\n");
                 difficulty++;
                 addWords();
             }
         }while(!userGuess.equals("q"));
         System.out.println("Thanks for playing");
+        System.out.println("Your accuracy was: " + ((float) answeredCorrectly/numberOfAttempts) * 100 + "%");
     }
 
     public static void main(String[] args) {
