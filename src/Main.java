@@ -14,10 +14,7 @@ public class Main {
 //            }
 //        }
 
-        int[] a = {3, 1, 6, 8};
-        Arrays.sort(a);
-        for(int x : a) {
-            System.out.print(x);
-        }
+        ArrayList<String> al = new ArrayList<>();
+        System.out.println(al.size());
     }
 }
