@@ -76,7 +76,7 @@ public class New {
             scrambleWord();
             prompt();
             userGuess = kbd.nextLine();
-            while(!userGuess.equals(answer)) {
+            while(!userGuess.equals(answer) && !userGuess.equals("q")) {
                 System.out.println("\nYou got it wrong, try again");
                 System.out.println("Scrambled word is " + scrambledWord);
                 System.out.print("Your guess: ");
