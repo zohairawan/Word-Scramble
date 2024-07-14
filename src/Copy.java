@@ -10,9 +10,7 @@ TODO: Figure out how to use more than one word (figure out the problem of spaces
 TODO: Instead of hardcoding the correct word see if you can get the word as input from a file
  */
 
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Copy {
 
@@ -68,28 +66,177 @@ public class Copy {
     }
 }
 
-
-
-
-
-
-
-
-
-
-//hello car new
-//.size
-
-
-
-// hello car <- user input
-// [hello][car] <- split string (remove white space) and store in String array
-// [h][e][l][l][o] <- char array
-//start loop
-// [e][h][l][o][l] <- ArrayList of type char (1 iteration captures all letters from first word)
-//second iteration starts (remember to add space)
-//[c][a][r] <- char array
-//[r][c][a] <- ArrayList of type char
-//Exit condition for loop is length of split string array
-//trim it at the end
-//ehlol rca <- String
+//package MyScramble;
+//
+//        import java.util.*;;
+//
+//public class WordScramble {
+//
+//    Map<String, HashMap<String, ArrayList<String>>> wordMap = new HashMap<>() {{
+//        put("easy", new HashMap<String, ArrayList<String>>() {{
+//            put("words", new ArrayList<String>() {{
+//                add("ridge");
+//                add("youth");
+//                add("horse");
+//                add("stand");
+//                add("flush");
+//            }});
+//            put("hints", new ArrayList<String>() {{
+//                add("mountain");
+//                add("kid");
+//                add("cowboy");
+//                add("JoJo");
+//                add("poop");
+//            }});
+//        }});
+//        put("medium", new HashMap<String, ArrayList<String>>() {{
+//            put("words", new ArrayList<String>() {{
+//                add("occupy");
+//                add("artist");
+//                add("lesson");
+//                add("battle");
+//                add("copper");
+//            }});
+//            put("hints", new ArrayList<String>() {{
+//                add("take");
+//                add("Van Gogh");
+//                add("school");
+//                add("war");
+//                add("wires");
+//            }});
+//        }});
+//        put("hard", new HashMap<String, ArrayList<String>>() {{
+//            put("words", new ArrayList<String>() {{
+//                add("verdict");
+//                add("sulphur");
+//                add("retired");
+//                add("plastic");
+//                add("concept");
+//            }});
+//            put("hints", new ArrayList<String>() {{
+//                add("court");
+//                add("boom");
+//                add("old");
+//                add("straw");
+//                add("idea");
+//            }});
+//        }});
+//    }};
+//
+//
+//    String difficulty = "easy", currentWord = "", scrambledWord = "", hint = "";
+//    boolean gameFinished = false;
+//
+//    Scanner sc = new Scanner(System.in);
+//    Random rand = new Random();
+//
+//
+//    // ------------------------------------------------------------------------------
+//    public String scrambleWord(String word) {
+//        StringBuilder builder = new StringBuilder("");
+//
+//        List<String> split = new ArrayList<String>(Arrays.asList(word.split("")));
+//        Collections.shuffle(split);
+//        split.forEach(builder::append);
+//
+//        return builder.toString();
+//    }
+//
+//    // ------------------------------------------------------------------------------
+//    public void getRandomWord() {
+//        int index = rand.nextInt(wordMap.get(difficulty).get("words").size());
+//
+//        currentWord = wordMap.get(difficulty).get("words").remove(index);
+//        scrambledWord = scrambleWord(currentWord);
+//        hint = wordMap.get(difficulty).get("hints").remove(index);
+//    }
+//
+//    // ------------------------------------------------------------------------------
+//    public boolean continueOrNot() {
+//        System.out.print("\nWould you like to continue? (y/n): ");
+//        String input = sc.next();
+//        System.out.println("\n");
+//
+//        return (input.equals("y")) || (input.equals("yes"));
+//    }
+//
+//    // ------------------------------------------------------------------------------
+//    public void userGuess() {
+//        boolean continueGuessing = true;
+//        while (continueGuessing) {
+//            System.out.printf(
+//                    """
+//                      Unscramble -> : %s
+//                         Hint    -> : %s
+//                    """, scrambledWord, hint
+//            );
+//            System.out.print("\nEnter your answer: ");
+//            String input = sc.next();
+//
+//            if (input.equals(currentWord)) {
+//                System.out.println("\nYou got it correct!");
+//                continueGuessing = false;
+//                continue;
+//            }
+//
+//            System.out.println("\nIncorrect, please try again.");
+//        }
+//
+//    }
+//
+//    // ------------------------------------------------------------------------------
+//    public void setDifficulty(String diff) {
+//        System.out.printf(
+//                """
+//
+//                =============================
+//                  Changing difficulty to %s
+//                =============================
+//
+//                """, diff
+//        );
+//        this.difficulty = diff;
+//    }
+//
+//    // ------------------------------------------------------------------------------
+//    public void endGame() {
+//        System.out.println("Congradulations, you have finished the game!");
+//        gameFinished = true;
+//    }
+//
+//    // ------------------------------------------------------------------------------
+//    public WordScramble() {
+//        System.out.printf(
+//                """
+//                  _______________________________________________
+//                  ========= Welcome to Word Scramble! ===========
+//                  ===============================================
+//
+//                  Current Difficulty: %s
+//
+//
+//                """, difficulty
+//        );
+//
+//        // Main Game Loop
+//        do {
+//            getRandomWord();
+//            userGuess();
+//
+//            switch (difficulty) {
+//                case "easy" -> { if (wordMap.get(difficulty).get("words").isEmpty()) { setDifficulty("medium"); }}
+//                case "medium" -> { if (wordMap.get(difficulty).get("words").isEmpty()) { setDifficulty("hard"); }}
+//                case "hard" -> { if (wordMap.get(difficulty).get("words").isEmpty()) { endGame(); }}
+//            }
+//
+//        } while ((!gameFinished) ? continueOrNot() : false);
+//
+//        System.out.println("\nThank you for playing!\n\n");
+//    }
+//
+//
+//    // ------------------------------------------------------------------------------
+//    public static void main(String[] args) {
+//        new WordScramble();
+//    }
+//}
